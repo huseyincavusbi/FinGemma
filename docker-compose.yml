@@ -1,0 +1,42 @@
+services:
+  fingemma-ui:
+    image: huseyincavus/fingemma:latest
+    container_name: fingemma-ui
+    ports:
+      - "7860:7860"
+    environment:
+      - APP_MODE=ui
+      - PORT=7860
+      - SERVER_NAME=0.0.0.0
+    restart: unless-stopped
+    profiles:
+      - ui
+
+  fingemma-api:
+    image: huseyincavus/fingemma:latest
+    container_name: fingemma-api
+    ports:
+      - "8000:8000"
+    environment:
+      - APP_MODE=api
+      - PORT=8000
+    restart: unless-stopped
+    profiles:
+      - api
+
+  fingemma-both:
+    image: huseyincavus/fingemma:latest
+    container_name: fingemma-ui-default
+    ports:
+      - "7860:7860"
+    environment:
+      - APP_MODE=ui
+      - PORT=7860
+      - SERVER_NAME=0.0.0.0
+    restart: unless-stopped
+    profiles:
+      - default
+
+networks:
+  default:
+    name: fingemma-network

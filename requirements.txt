@@ -1,0 +1,17 @@
+transformers>=4.41.0
+accelerate>=0.30.0
+peft>=0.11.0
+bitsandbytes>=0.42.0
+sentencepiece
+protobuf
+fastapi
+uvicorn[standard]
+python-multipart
+tqdm
+datasets
+pydantic
+pandas
+numpy
+torch
+huggingface_hub
+gradio>=4.31.0
