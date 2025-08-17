@@ -241,8 +241,9 @@ if __name__ == "__main__":
     except Exception as e:
         print(f"Warning: Could not disable API: {e}")
     
+    # For Docker, default to 0.0.0.0 so Gradio is accessible from outside the container
     share = os.environ.get("GRADIO_SHARE", "false").lower() == "true"
-    server_name = os.environ.get("SERVER_NAME", "127.0.0.1")
+    server_name = os.environ.get("SERVER_NAME", "0.0.0.0")
     port = int(os.environ.get("PORT", 7860))
     
     print(f"Starting Gradio UI on {server_name}:{port} with LOCAL_MODEL_PATH support...")

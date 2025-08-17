@@ -4,11 +4,14 @@ A containerized finance-focused language model based on Gemma 3 270M, fine-tuned
 
 ## Quick Start
 
-### Using Multi-Architecture Images (Recommended)
+
+### Quick UI Example
+
+![FinGemma UI Example](ui.png)
 
 ```bash
-# Run the web interface (auto-selects your architecture)
-docker run -p 7860:7860 huseyincavus/fingemma:latest
+# Run the web interface (ARM64 only)
+docker run -p 7860:7860 huseyincavus/fingemma-arm64:latest
 
 # Access at: http://localhost:7860
 ```
@@ -26,21 +29,11 @@ docker run -p 8000:8000 -e APP_MODE=api -e PORT=8000 huseyincavus/fingemma:lates
 
 | Image | Architecture | Size | Description |
 |-------|-------------|------|-------------|
-| [`huseyincavus/fingemma:latest`](https://hub.docker.com/repository/docker/huseyincavus/fingemma/general) | Multi-arch | Auto | **Recommended** - Auto-selects AMD64/ARM64 |
-| [`huseyincavus/fingemma-amd64:latest`](https://hub.docker.com/repository/docker/huseyincavus/fingemma-amd64/general) | AMD64 | ~5.3GB | Intel/AMD processors, Cloud servers |
 | [`huseyincavus/fingemma-arm64:latest`](https://hub.docker.com/repository/docker/huseyincavus/fingemma-arm64/general) | ARM64 | ~4.5GB | Apple Silicon, ARM servers |
 
 ## Advanced Usage
 
-### Force Specific Architecture
 
-```bash
-# Force AMD64 (Intel/AMD processors)
-docker run --platform linux/amd64 -p 7860:7860 huseyincavus/fingemma:latest
-
-# Force ARM64 (Apple Silicon, ARM servers)
-docker run --platform linux/arm64 -p 7860:7860 huseyincavus/fingemma:latest
-```
 
 ### Docker Compose
 
@@ -114,9 +107,7 @@ docker run -p 7860:7860 \
 - **GPU**: CUDA-compatible GPU (optional, for faster inference)
 
 ### Architecture Support
-- ✅ **AMD64**: Intel/AMD x86_64 processors
-- ✅ **ARM64**: Apple Silicon, AWS Graviton, ARM servers
-- ✅ **Multi-platform**: Automatic architecture detection
+- **ARM64**: Apple Silicon, AWS Graviton, ARM servers
 
 ## API Reference
 
@@ -197,7 +188,7 @@ docker pull --platform linux/amd64 huseyincavus/fingemma:latest
 docker pull --platform linux/arm64 huseyincavus/fingemma:latest
 ```
 
-## 🛠️ Development
+## Development
 
 ### Building from Source
 
@@ -239,7 +230,7 @@ See [DEPLOYMENT.md](DEPLOYMENT.md) for complete installation instructions for Wi
 - **Configurable**: Environment-based configuration
 - **Production Ready**: Docker Compose for orchestration
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
 
